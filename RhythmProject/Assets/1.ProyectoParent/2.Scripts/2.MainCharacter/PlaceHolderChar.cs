@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlaceHolderChar : MonoBehaviour
 {
+    [SerializeField] private GameObject swordCollider;
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
@@ -14,12 +16,22 @@ public class PlaceHolderChar : MonoBehaviour
     public void ClickDerecho()
     {
         animator.SetTrigger("Attack");
-        spriteRenderer.flipX = false;
+        transform.localScale = new Vector3(1f,1f,1f);
     }
 
     public void ClicIzquierdo()
     {
         animator.SetTrigger("Attack");
-        spriteRenderer.flipX = true;
+        transform.localScale = new Vector3(-1f, 1f, 1f);
+    }
+
+    private void ActiveSwordCollider()
+    {
+        swordCollider.SetActive(true);
+    }
+
+    private void DeactiveSwordCollider()
+    {
+        swordCollider.SetActive(false);
     }
 }
