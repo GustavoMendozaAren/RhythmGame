@@ -7,12 +7,26 @@ public class SpawnProyectiles : MonoBehaviour
     [SerializeField] private Transform spawnIzquierdo;
     [SerializeField] private Transform spawnDerecho;
 
-    private float tiempoEntreSpawns = 1.5f;
+    private bool isSpawnRigth = true;
 
-    private void Start()
+    //private void Start()
+    //{
+    //    InvokeRepeating("SpawnProyectilRight", 0f, tiempoEntreSpawns);
+    //    InvokeRepeating("SpawnProyectilLeft", 0.5f, tiempoEntreSpawns);
+    //}
+
+    public void SpawnProyectile()
     {
-        InvokeRepeating("SpawnProyectilRight", 0f, tiempoEntreSpawns);
-        InvokeRepeating("SpawnProyectilLeft", 0.5f, tiempoEntreSpawns);
+        if (isSpawnRigth)
+        {
+            SpawnProyectilRight();
+            isSpawnRigth = false;
+        }
+        else
+        {
+            SpawnProyectilLeft();
+            isSpawnRigth = true;
+        }
     }
 
     private void SpawnProyectilRight()

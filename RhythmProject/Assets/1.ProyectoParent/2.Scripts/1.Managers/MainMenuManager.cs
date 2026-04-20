@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject playPanel;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject creditsPanel;
 
@@ -11,6 +12,18 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1.0f;
+    }
+
+    public void OpenPlayPanelButton()
+    {
+        mainMenuPanel.SetActive(false);
+        playPanel.SetActive(true);
+    }
+
+    public void BackPlayPanelButton()
+    {
+        mainMenuPanel.SetActive(true);
+        playPanel.SetActive(false);
     }
 
     public void OptionsButton()

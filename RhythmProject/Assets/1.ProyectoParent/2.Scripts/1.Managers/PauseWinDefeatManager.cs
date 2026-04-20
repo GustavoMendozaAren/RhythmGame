@@ -8,18 +8,21 @@ public class PauseWinDefeatManager : MonoBehaviour
     [SerializeField] private GameObject defatPanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private BeatTest1 beatTest;
 
     public int Aciertos { get; set; }
 
     public void PausePanelBtn()
     {
         pausePanel.SetActive(true);
+        beatTest.musicSource.Pause();
         Time.timeScale = 0f;
     }
 
     public void BackPausePanelBtn()
     {
         pausePanel.SetActive(false);
+        beatTest.musicSource.UnPause();
         Time.timeScale = 1.0f;
     }
 
@@ -37,18 +40,20 @@ public class PauseWinDefeatManager : MonoBehaviour
 
     public void AddScoreToText()
     {
-        scoreText.text = $"Score: {Aciertos}/10";
+        scoreText.text = $"Score: {Aciertos}";
     }
 
     public void OpenDefeatPanel()
     {
         defatPanel.SetActive(true);
+        beatTest.musicSource.Stop();
         Time.timeScale = 0f;
     }
 
     public void OpenWinPanel()
     {
         winPanel.SetActive(true);
+        beatTest.musicSource.Stop();
         Time.timeScale = 0;
     }
 }

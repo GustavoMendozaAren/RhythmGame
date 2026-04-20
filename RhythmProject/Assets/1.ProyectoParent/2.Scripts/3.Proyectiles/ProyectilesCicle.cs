@@ -4,6 +4,7 @@ public class ProyectilesCicle : MonoBehaviour
 {
     [SerializeField] private GameObject textoMas1;
     [SerializeField] private SpriteRenderer proyectileSprite;
+    [SerializeField] private CircleCollider2D circleCollider;
 
     private float velocidad = 5f;
     private PauseWinDefeatManager winDefeatManager;
@@ -27,6 +28,7 @@ public class ProyectilesCicle : MonoBehaviour
 
             textoMas1.SetActive(true);
             proyectileSprite.enabled = false;
+            circleCollider.enabled = false;
             Destroy(gameObject, 1f);
         }
 
@@ -43,7 +45,7 @@ public class ProyectilesCicle : MonoBehaviour
         winDefeatManager.Aciertos++;
         winDefeatManager.AddScoreToText();
 
-        if (winDefeatManager.Aciertos >= 10)
+        if (winDefeatManager.Aciertos >= 250)
             winDefeatManager.OpenWinPanel();
     }
 }
